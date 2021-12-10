@@ -1,0 +1,22 @@
+.label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.checkbox {
+  appearance: none;
+  border: 2px solid black;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.checkbox:checked {
+  appearance: none;
+  background-color: blue;
+}
+
+.checkbox:focus {
+  outline: 1px solid lightskyblue;
+}
