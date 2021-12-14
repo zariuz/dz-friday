@@ -1,13 +1,13 @@
-import axios from 'axios'
+
 import {instance} from "./index";
 
 export const authApi = {
     login(data: LoginParamsType) {
         return instance.post<CommonResponseType<{userId?:number}>>('auth/login', data)
     },
-    me() {
+/*    me() {
         return instance.get<CommonResponseType<{id: number, email: string, login:string}>>('auth/me')
-    },
+    },*/
     logout(){
         return instance.delete<CommonResponseType<{userId?:number}>>('auth/me')
     }
@@ -20,7 +20,6 @@ export const authApi = {
 export type LoginParamsType = {
     email: string;
     password: string;
-    rememberMe: boolean;
     captcha?: string;
 }
 

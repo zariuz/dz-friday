@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import {Routes, Route, BrowserRouter} from "react-router-dom";
+import {Routes, Route} from "react-router-dom";
 import {Profile} from "./components/Profile";
 import {Register} from "./components/Register/Register";
 import {RecoveryPass} from "./components/Password/RecoveryPass";
@@ -10,14 +10,11 @@ import {Header} from "./components/Header/Header";
 import {Login} from "./components/Login/Login";
 import {TestPage} from "./components/TestComponents/TestPage";
 
-/*import {Switch} from 'react-router-dom';*/
 
 function App() {
     return (
         <div className="App">
             <Header/>
-            {/*<BrowserRouter>*/}
-            {/* <Switch>*/}
             <Routes>
                 <Route path='/profile' element={<Profile/>}/>
                 <Route path='/' element={<Profile/>}/>
@@ -29,8 +26,7 @@ function App() {
                 <Route path='*' element={<ErrorPage/>}/>
 
             </Routes>
-            {/* </Switch>*/}
-            {/*  </BrowserRouter>*/}
+
         </div>
     )
         ;

@@ -10,7 +10,8 @@ export const Login = () => {
 
 
     return (<div className="login-wrapper">
-        <h1>Please Log In</h1>
+        <h1>It-Incubator</h1>
+        <h2>Sign In</h2>
         <form>
             <label>
                 <p>Username</p>
@@ -20,8 +21,16 @@ export const Login = () => {
                 <p>Password</p>
                 <input type="password" />
             </label>
+
             <div>
-                <button type="submit">Submit</button>
+                Forgot password
+            </div>
+            <div>
+                <button type="submit">Login</button>
+            </div>
+            <p>Don't have an account?</p>
+            <div>
+                <button type="submit">Sign Up</button>
             </div>
         </form>
     </div>)
