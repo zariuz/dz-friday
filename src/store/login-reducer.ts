@@ -1,6 +1,6 @@
 export const initialState = {}
 
-export const authReducer = (state: any = initialState, action: any) => {
+export const loginReducer = (state: any = initialState, action: any) => {
     switch (action.type) {
         case 'login': {
             return {...state}
