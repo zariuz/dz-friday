@@ -9,7 +9,7 @@ import {passwordReducer} from "./password-reducer";
 const RootReducer = combineReducers({
     register: registerReducer,
     password: passwordReducer,
-    auth: loginReducer,
+    login: loginReducer,
     profile: profileReducer,
     resPass: resPassReducer,
 })

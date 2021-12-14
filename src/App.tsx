@@ -9,6 +9,7 @@ import {ErrorPage} from "./components/ErrorPage";
 import {Header} from "./components/Header/Header";
 import {Login} from "./components/Login/Login";
 import {TestPage} from "./components/TestComponents/TestPage";
+
 /*import {Switch} from 'react-router-dom';*/
 
 function App() {
@@ -16,22 +17,20 @@ function App() {
         <div className="App">
             <Header/>
             {/*<BrowserRouter>*/}
-               {/* <Switch>*/}
-                    <Routes>
-                        <Route path='/profile' element={<Profile/>}/>
-                        <Route path='/' element={<Profile/>}/>
+            {/* <Switch>*/}
+            <Routes>
+                <Route path='/profile' element={<Profile/>}/>
+                <Route path='/' element={<Profile/>}/>
+                <Route path='/login' element={<Login/>}/>
+                <Route path='/register' element={<Register/>}/>
+                <Route path='/recoveryPass' element={<RecoveryPass/>}/>
+                <Route path='/newPass' element={<NewPass/>}/>
+                <Route path='/testPage' element={<TestPage/>}/>
+                <Route path='*' element={<ErrorPage/>}/>
 
-                        <Route path='/login' element={<Login/>}/>
-
-                        <Route path='/register' element={<Register/>}/>
-                        <Route path='/recoveryPass' element={<RecoveryPass/>}/>
-                        <Route path='/newPass' element={<NewPass/>}/>
-                        <Route path='/testPage' element={<TestPage/>}/>
-                        <Route path='*' element={<ErrorPage/>}/>
-
-                    </Routes>
-               {/* </Switch>*/}
-          {/*  </BrowserRouter>*/}
+            </Routes>
+            {/* </Switch>*/}
+            {/*  </BrowserRouter>*/}
         </div>
     )
         ;
