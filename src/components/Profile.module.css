@@ -12,6 +12,9 @@
 
 .avatar{
     padding-bottom: 40px;
+    height: 96px;
+    width: 96px;
+    border-radius: 50%;
 }
 
 .date{
