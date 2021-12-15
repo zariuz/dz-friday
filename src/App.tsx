@@ -3,15 +3,15 @@ import './App.css';
 import {Routes, Route} from "react-router-dom";
 import {Profile} from "./components/Profile";
 import {Register} from "./components/Register/Register";
-import {RecoveryPass} from "./components/Password/RecoveryPass";
-import {NewPass} from "./components/Password/NewPass";
+import {ForgotPassword} from "./components/Password/ForgotPassword";
+import {NewPassword} from "./components/Password/NewPassword";
 import {ErrorPage} from "./components/ErrorPage";
 import {Header} from "./components/Header/Header";
 import {Login} from "./components/Login/Login";
 import {TestPage} from "./components/TestComponents/TestPage";
 
 
-function App() {
+export const App = () => {
     return (
         <div className="App">
             <Header/>
@@ -20,16 +20,11 @@ function App() {
                 <Route path='/' element={<Profile/>}/>
                 <Route path='/login' element={<Login/>}/>
                 <Route path='/register' element={<Register/>}/>
-                <Route path='/recoveryPass' element={<RecoveryPass/>}/>
-                <Route path='/newPass' element={<NewPass/>}/>
+                <Route path='/forgot-password' element={<ForgotPassword/>}/>
+                <Route path='/set-new-password' element={<NewPassword/>}/>
                 <Route path='/testPage' element={<TestPage/>}/>
                 <Route path='*' element={<ErrorPage/>}/>
-
             </Routes>
-
         </div>
     )
-        ;
 }
-
-export default App;

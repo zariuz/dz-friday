@@ -1,6 +1,6 @@
 let initialState = {}
 
-export const resPassReducer = (state: any = initialState, action: any) => {
+export const newPasswordReducer = (state: any = initialState, action: any) => {
     switch (action.type) {
         case 'res-pass': {
             return {...state}

@@ -2,16 +2,16 @@ import {applyMiddleware, combineReducers, createStore} from "redux";
 import thunk from "redux-thunk";
 import {loginReducer} from "./login-reducer";
 import {registerReducer} from "./register-Reducer";
-import {resPassReducer} from "./res-pass-reducer";
+import {newPasswordReducer} from "./new-password-reducer";
 import {profileReducer} from "./profile-reducer";
-import {passwordReducer} from "./password-reducer";
+import {forgotPasswordReducer} from "./forgot-password-reducer";
 
 const RootReducer = combineReducers({
     register: registerReducer,
-    password: passwordReducer,
+    forgotPassword: forgotPasswordReducer,
     login: loginReducer,
     profile: profileReducer,
-    resPass: resPassReducer,
+    newPassword: newPasswordReducer,
 })
 
 export const store = createStore(RootReducer, applyMiddleware(thunk))
