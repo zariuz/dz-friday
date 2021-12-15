@@ -5,8 +5,9 @@ import axios from 'axios'
 const initialState = {
     email: '',
     password: '',
-    isError: null,
-    errorText: ''
+    isError: true,
+    errorText: '',
+    isLoading: false
 }
 
 export const registerReducer = (state: InitialStateType = initialState, action: ActionTypes): InitialStateType => {
@@ -19,6 +20,8 @@ export const registerReducer = (state: InitialStateType = initialState, action: 
             return {...state, errorText: action.errorText}
         case 'resetErrorText':
             return {...state, errorText: action.value}
+        case 'loading':
+            return {...state, isLoading: action.value}
         default:
             return state
     }
@@ -29,11 +32,14 @@ export const register = (email: string, password: string) => ({type: 'register',
 export const setError = (error: boolean) => ({type: 'error', error} as const)
 export const errorText = (errorText: string) => ({type: 'errorText', errorText} as const)
 export const resetErrorText = (value: string) => ({type: 'resetErrorText', value} as const)
+export const setLoading = (value: boolean) => ({type: 'loading', value} as const)
 
 // Thunks
 export const userRegistration = (email: string, password: string) => async (dispatch: Dispatch) => {
     try {
+        dispatch(setLoading(true))
         await authAPI.registration(email, password)
+        dispatch(setLoading(false))
         dispatch(register(email, password))
         dispatch(setError(false))
     } catch (err) {
@@ -47,8 +53,9 @@ export const userRegistration = (email: string, password: string) => async (disp
 type InitialStateType = {
     email: string
     password: string
-    isError: boolean | null
+    isError: boolean
     errorText?: string
+    isLoading: boolean
 }
 
 type ActionTypes =
@@ -56,3 +63,4 @@ type ActionTypes =
     | ReturnType<typeof setError>
     | ReturnType<typeof errorText>
     | ReturnType<typeof resetErrorText>
+    | ReturnType<typeof setLoading>
