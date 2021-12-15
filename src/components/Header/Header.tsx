@@ -6,8 +6,8 @@ export const Header = () => {
         <div className={s.container}>
             <NavLink className={s.link} to='/profile'> profile </NavLink>
             <NavLink className={s.link} to='/register'> register </NavLink>
-            <NavLink className={s.link} to='/newPass'> newPass </NavLink>
-            <NavLink className={s.link} to='/recoveryPass'> RecoveryPass</NavLink>
+            <NavLink className={s.link} to='/set-new-password'> newPass </NavLink>
+            <NavLink className={s.link} to='/forgot-password'> forgotPass</NavLink>
             <NavLink className={s.link} to='/login'> login </NavLink>
             <NavLink to='/testPage'> test </NavLink>
         </div>
