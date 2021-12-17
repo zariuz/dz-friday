@@ -1,74 +1,57 @@
-import React, {ChangeEvent, useState} from 'react'
+import React, {FormEvent, useState} from 'react'
+import {Link} from "react-router-dom"
 import './login.module.css';
-import {useDispatch, useSelector} from "react-redux";
-import {AppRootStateType} from "../../store/store";
-import {passwordLoginAC, setIsLoggedInAC, usernameLoginAC} from "../../store/login-reducer";
+import {useDispatch} from "react-redux";
+import {loginTC} from "../../store/login-reducer";
+import {Modal} from "../common/Modal/Modal";
+import style from "../Password/ForgotPassword.module.scss";
+import {SuperInput} from "../common/SuperInput/SuperInput";
+import SuperButton from "../common/SuperButton/SuperButton";
 
 export const Login = () => {
+    const [data, setData] = useState({email: '', password: '', rememberMe: false});
     const dispatch = useDispatch();
 
-    const storeIsLoggedIn = useSelector<AppRootStateType, boolean>(state => state.login.isLoggedIn)
-    const storeUsername = useSelector<AppRootStateType, string>(state => state.login.username)
-    const storePassword = useSelector<AppRootStateType, string>(state => state.login.password)
+
+    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+        dispatch(loginTC(data));
+        e.preventDefault();
+    };
+
+    return (
+        <Modal subtitle='Sign In'>
+            <form onSubmit={handleSubmit} className={style.forgot}>
+                <SuperInput
+                    label='Email'
+                    type='email'
+                    id='email'
+                    value={data.email}
+                    onChange={e => setData({...data, email: e.target.value})}
+                />
+                <SuperInput
+                    label='Password'
+                    type='password'
+                    id='email'
+                    value={data.password}
+                    onChange={e => setData({...data, password: e.target.value})}
+                />
+                <div>
+                    <SuperButton>Login</SuperButton>
+                </div>
+
+            </form>
+
+            <div>
+                <Link to="/forgot-password">Forgot password</Link>
+            </div>
 
 
-    const [value, setValue] = useState<boolean>(storeIsLoggedIn)
-    const [username, setUsername] = useState<string>(storeUsername)
-    const [password, setPassword] = useState<string>(storePassword)
+            <p>Don't have an account?</p>
 
-    const onChangeUsername = () => {
-        // (e: ChangeEvent<HTMLInputElement>) => {
-        //     setUsername(e.currentTarget.value)
-        // }
-    }
-    const onChangePassword = () => {
-        // (e: ChangeEvent<HTMLInputElement>) => {
-        //     setPassword(e.currentTarget.value)
-        // }
-    }
+            <div>
+                <Link to="/register">Sign Up</Link>
+            </div>
 
-
-
-    const onClickForgotPassword = () => {
-        //redirect
-    }
-    const onClickSignUp = () => {
-        //redirect
-    }
-
-    const onClickLogin = () => {
-        dispatch(usernameLoginAC(username))
-        dispatch(passwordLoginAC(password))
-        dispatch(setIsLoggedInAC(value))
-    }
-
-    return (<div className="login-wrapper">
-
-        <h1>It-Incubator</h1>
-
-        <h2>Sign In</h2>
-
-        <div>
-            <p>Username</p>
-            <input value={username} onChange={onChangeUsername}/>
-            <p>Password</p>
-            <input value={password} onChange={onChangePassword}/>
-        </div>
-
-        <div>
-            <button onClick={onClickForgotPassword}> Forgot password</button>
-        </div>
-
-        <div>
-            <button onClick={onClickLogin}>Login</button>
-        </div>
-
-        <p>Don't have an account?</p>
-
-        <div>
-            <button onClick={onClickSignUp}>Sign Up</button>
-        </div>
-
-    </div>)
+        </Modal>)
 }
 

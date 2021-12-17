@@ -41,15 +41,14 @@ export const ForgotPassword: React.FC = () => {
             <form onSubmit={handleSubmit} className={style.forgot}>
                 <SuperInput
                     label='Email'
-                    type="email"
-                    id="email"
+                    type='email'
+                    id='email'
                     value={data.email}
                     onChange={e => setData({...data, email: e.target.value})}
                 />
                 <p>Enter your email address and we will send you further instructions</p>
                 <Error error={error}/>
                 <SuperButton>Send Instructions</SuperButton>
-
             </form>
             <div className={style.forgotBottom}>
                 <p>Did you remember your password?</p>

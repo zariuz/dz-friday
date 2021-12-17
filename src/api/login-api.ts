@@ -3,13 +3,13 @@ import {instance} from "./index";
 
 export const authApi = {
     login(data: LoginParamsType) {
-        return instance.post<CommonResponseType<{userId?:number}>>('auth/login', data)
+        return instance.post<CommonResponseType>('auth/login', data)
     },
 /*    me() {
         return instance.get<CommonResponseType<{id: number, email: string, login:string}>>('auth/me')
     },*/
     logout(){
-        return instance.delete<CommonResponseType<{userId?:number}>>('auth/me')
+        return instance.delete<CommonResponseType>('auth/me')
     }
 }
 
@@ -18,14 +18,25 @@ export const authApi = {
 //Types
 
 export type LoginParamsType = {
-    email: string;
-    password: string;
-    captcha?: string;
+    email: string
+    password: string
+    rememberMe: boolean
 }
 
-export type CommonResponseType<T = {}> = {
-    resultCode: number
-    messages: Array<string>
-    fieldsErrors: Array<string>
-    data: T
-}
+export type UserDataType = {
+    _id: string
+    email: string
+    name: string
+    avatar?: string
+    publicCardPacksCount: number
+    created: Date
+    updated: Date
+    isAdmin: boolean
+    verified: boolean
+    rememberMe: boolean
+    token: string
+    tokenDeathTime: Date
+    __v: number
+};
+type ErrorType = { error?: string };
+export type CommonResponseType = UserDataType & ErrorType;
