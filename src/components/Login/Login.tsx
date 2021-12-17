@@ -17,23 +17,23 @@ export const Login = () => {
     const [password, setPassword] = useState<string>(storePassword)
 
     const onChangeUsername = () => {
-        (e: ChangeEvent<HTMLInputElement>) => {
-            setUsername(e.currentTarget.value)
-        }
+        // (e: ChangeEvent<HTMLInputElement>) => {
+        //     setUsername(e.currentTarget.value)
+        // }
     }
     const onChangePassword = () => {
-        (e: ChangeEvent<HTMLInputElement>) => {
-            setPassword(e.currentTarget.value)
-        }
+        // (e: ChangeEvent<HTMLInputElement>) => {
+        //     setPassword(e.currentTarget.value)
+        // }
     }
 
 
 
     const onClickForgotPassword = () => {
-        redirect
+        //redirect
     }
     const onClickSignUp = () => {
-        redirect
+        //redirect
     }
 
     const onClickLogin = () => {

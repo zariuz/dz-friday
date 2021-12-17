@@ -1,0 +1,36 @@
+.inputField {
+    margin-bottom: 15px;
+}
+
+.inputField label {
+    display: block;
+    font-size: 16px;
+    line-height: 20px;
+    color: rgba(36, 37, 74, 0.5);
+}
+
+.inputField__error {
+    height: 10px;
+}
+
+.inputField__error span {
+    font-size: 13px;
+    color: red;
+}
+
+.input {
+    width: 100%;
+    border: none;
+    background-color: inherit;
+    border-bottom: 2px solid rgba(36, 37, 74, 0.5);
+    padding: 0 0 5px 15px;
+    font-size: 18px;
+}
+
+.input:focus {
+    outline: none;
+}
+
+.input__error {
+    border-bottom: 2px solid red;
+}

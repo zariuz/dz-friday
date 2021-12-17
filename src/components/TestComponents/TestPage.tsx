@@ -1,6 +1,6 @@
-import SuperButton from "../SuperComponents/SuperButton/SuperButton";
-import SuperInputText from "../SuperComponents/SuperInputText/SuperInputText";
-import SuperCheckbox from "../SuperComponents/SuperCheckbox/SuperCheckbox";
+import SuperButton from "../common/SuperButton/SuperButton";
+import {SuperInput} from "../common/SuperInput/SuperInput";
+import SuperCheckbox from "../common/SuperCheckbox/SuperCheckbox";
 import s from './TestPage.module.css'
 
 export const TestPage = () => {
@@ -8,7 +8,7 @@ export const TestPage = () => {
         <SuperButton>
             button
         </SuperButton>
-        <SuperInputText/>
+        <SuperInput/>
         <SuperCheckbox/>
     </div>
 }

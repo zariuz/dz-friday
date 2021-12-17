@@ -1,12 +1,12 @@
 import React from "react";
 import style from "./Modal.module.css";
 
-type AuthModalPropsType = {
+type ModalPropsType = {
     subtitle: string
 }
 
 
-export const AuthModal: React.FC<AuthModalPropsType> = (props) => {
+export const Modal: React.FC<ModalPropsType> = (props) => {
     const {children, subtitle} = props
 
     return (
