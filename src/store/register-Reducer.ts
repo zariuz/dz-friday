@@ -1,66 +1,51 @@
 import {Dispatch} from 'redux'
-import {authAPI} from '../api'
-import axios from 'axios'
+import {RegisterDataType, registrationAPI} from "../api/register-api";
 
 const initialState = {
-    email: '',
-    password: '',
-    isError: true,
-    errorText: '',
-    isLoading: false
+    isRegistered: false,
+    isFetching: false,
+    error: "",
 }
 
-export const registerReducer = (state: InitialStateType = initialState, action: ActionTypes): InitialStateType => {
+export const registerReducer = (state: InitialRegisterStateType = initialState, action: ActionTypes): InitialRegisterStateType => {
     switch (action.type) {
-        case 'register':
-            return {...state, email: action.email, password: action.password}
-        case 'error':
-            return {...state, isError: action.error}
-        case 'errorText':
-            return {...state, errorText: action.errorText}
-        case 'resetErrorText':
-            return {...state, errorText: action.value}
-        case 'loading':
-            return {...state, isLoading: action.value}
+        case 'register/SET-IS-REGISTERED':
+            return {...state, isRegistered: action.isRegistered}
+        case "register/SET-IS-FETCHING":
+            return {...state, isFetching: action.isFetching}
+        case "register/SET-ERROR":
+            return {...state, error: action.error}
         default:
             return state
     }
 }
 
 // Actions
-export const register = (email: string, password: string) => ({type: 'register', email, password} as const)
-export const setError = (error: boolean) => ({type: 'error', error} as const)
-export const errorText = (errorText: string) => ({type: 'errorText', errorText} as const)
-export const resetErrorText = (value: string) => ({type: 'resetErrorText', value} as const)
-export const setLoading = (value: boolean) => ({type: 'loading', value} as const)
+export const setIsRegistered = (isRegistered: boolean) => ({type: "register/SET-IS-REGISTERED", isRegistered,} as const)
+export const setIsRegistrationFetching = (isFetching: boolean) => ({
+    type: "register/SET-IS-FETCHING",
+    isFetching,
+} as const)
+export const setRegistrationError = (error: string) => ({type: "register/SET-ERROR", error,} as const)
 
 // Thunks
-export const userRegistration = (email: string, password: string) => async (dispatch: Dispatch) => {
+export const register = (data: RegisterDataType) => async (dispatch: Dispatch) => {
     try {
-        dispatch(setLoading(true))
-        await authAPI.registration(email, password)
-        dispatch(setLoading(false))
-        dispatch(register(email, password))
-        dispatch(setError(false))
-    } catch (err) {
-        if (axios.isAxiosError(err) && err.response) {
-            dispatch(errorText(err.response.data.error))
-        }
+        dispatch(setIsRegistrationFetching(true))
+        await registrationAPI.register(data)
+        dispatch(setIsRegistered(true))
+        dispatch(setIsRegistrationFetching(false))
+    } catch (e: any) {
+        debugger
+        dispatch(setRegistrationError(e.response?.data.error))
+        dispatch(setIsRegistrationFetching(false))
     }
-}
+};
 
 // Types
-type InitialStateType = {
-    email: string
-    password: string
-    isError: boolean
-    errorText?: string
-    isLoading: boolean
-}
+export type InitialRegisterStateType = typeof initialState
 
 type ActionTypes =
-    | ReturnType<typeof register>
-    | ReturnType<typeof setError>
-    | ReturnType<typeof errorText>
-    | ReturnType<typeof resetErrorText>
-    | ReturnType<typeof setLoading>
+    | ReturnType<typeof setIsRegistered>
+    | ReturnType<typeof setIsRegistrationFetching>
+    | ReturnType<typeof setRegistrationError>

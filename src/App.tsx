@@ -9,6 +9,7 @@ import {ErrorPage} from "./components/ErrorPage";
 import {Header} from "./components/Header/Header";
 import {Login} from "./components/Login/Login";
 import {TestPage} from "./components/TestComponents/TestPage";
+import {CheckEmail} from "./components/Password/CheckEmail";
 
 
 export const App = () => {
@@ -22,6 +23,7 @@ export const App = () => {
                 <Route path='/register' element={<Register/>}/>
                 <Route path='/forgot-password' element={<ForgotPassword/>}/>
                 <Route path='/set-new-password' element={<NewPassword/>}/>
+                <Route path='/check-email' element={<CheckEmail/>}/>
                 <Route path='/testPage' element={<TestPage/>}/>
                 <Route path='*' element={<ErrorPage/>}/>
             </Routes>

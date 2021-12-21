@@ -8,8 +8,9 @@ import {Error} from "../common/Error/Error";
 import {forgotPassword, forgotPasswordError, forgotStatusType} from "../../store/forgot-password-reducer";
 import {useDispatch, useSelector} from "react-redux";
 import {Dispatch} from "redux";
+import { Navigate } from "react-router-dom";
 import {AppRootStateType} from "../../store/store";
-import {CheckEmail} from "./CheckEmail";
+import {Preloader} from "../common/Preloader/Preloader";
 
 export const ForgotPassword: React.FC = () => {
     const [data, setData] = useState({
@@ -33,7 +34,12 @@ export const ForgotPassword: React.FC = () => {
 
     if (status === "succeeded") {
         dispatch(forgotPasswordError(''))
-        return <CheckEmail/>
+
+        return <Navigate to='/check-email' state={data.email} />
+    }
+
+    if (status === "loading") {
+        return <Preloader/>
     }
 
     return (
