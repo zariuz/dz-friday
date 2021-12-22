@@ -5,9 +5,9 @@ export const authApi = {
     login(data: LoginParamsType) {
         return instance.post<CommonResponseType>('auth/login', data)
     },
-/*    me() {
-        return instance.get<CommonResponseType<{id: number, email: string, login:string}>>('auth/me')
-    },*/
+    me() {
+        return instance.post<CommonResponseType>("auth/me", {});
+    },
     logout(){
         return instance.delete<CommonResponseType>('auth/me')
     }

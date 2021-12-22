@@ -1,16 +1,35 @@
 import {NavLink} from 'react-router-dom'
-import s from './Header.module.css';
+import style from './Header.module.css';
+import {CardSvg} from "../../assets/icon/CardSVG";
+import {UserSvg} from "../../assets/icon/UserSVG";
+import {useDispatch, useSelector} from "react-redux";
+import {Dispatch} from "redux";
+import {logoutTC} from "../../store/login-reducer";
+import {AppRootStateType} from "../../store/store";
 
 export const Header = () => {
+    const status = useSelector<AppRootStateType>(state => state.auth.status);
+    const dispatch: Dispatch<any> = useDispatch();
+
+    const handleSubmit = () => {
+        dispatch(logoutTC())
+    };
+
     return (
-        <div className={s.container}>
-            <NavLink className={s.link} to='/profile'> profile </NavLink>
-            <NavLink className={s.link} to='/register'> register </NavLink>
-            <NavLink className={s.link} to='/set-new-password'> newPass </NavLink>
-            <NavLink className={s.link} to='/forgot-password'> forgotPass</NavLink>
-            <NavLink className={s.link} to='/login'> login </NavLink>
-            <NavLink to='/testPage'> test </NavLink>
-        </div>
+        <header className={style.header}>
+            <h2>Cards</h2>
+            <nav className={style.headerNav}>
+                <ul className={style.headerList}>
+                    <li className={style.headerListItem}>
+                        <NavLink to='/profile' ><CardSvg/>Packs list</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to='/profile' ><UserSvg/>Profile</NavLink>
+                    </li>
+                </ul>
+            </nav>
+            <button className={style.logout} onClick={handleSubmit} disabled={status === "loading"}>Logout</button>
+        </header>
     )
 }
 

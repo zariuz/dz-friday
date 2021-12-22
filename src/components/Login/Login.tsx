@@ -1,22 +1,29 @@
 import React, {FormEvent, useState} from 'react'
-import {Link} from "react-router-dom"
+import {Link, Navigate} from "react-router-dom"
 import './login.module.css';
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {loginTC} from "../../store/login-reducer";
 import {Modal} from "../common/Modal/Modal";
 import style from "../Password/ForgotPassword.module.scss";
 import {SuperInput} from "../common/SuperInput/SuperInput";
 import SuperButton from "../common/SuperButton/SuperButton";
+import {AppRootStateType} from "../../store/store";
 
 export const Login = () => {
     const [data, setData] = useState({email: '', password: '', rememberMe: false});
     const dispatch = useDispatch();
+
+    const isLoggedIn = useSelector<AppRootStateType, boolean>(state => state.login.isLoggedIn);
 
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         dispatch(loginTC(data));
         e.preventDefault();
     };
+
+    if (isLoggedIn) {
+        return <Navigate to='/profile'/>
+    }
 
     return (
         <Modal subtitle='Sign In'>
