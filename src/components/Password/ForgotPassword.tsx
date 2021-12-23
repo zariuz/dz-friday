@@ -1,5 +1,5 @@
 import React, {FormEvent, useState} from 'react';
-import style from "./ForgotPassword.module.scss";
+import style from "./ForgotPassword.module.css";
 import {Modal} from "../common/Modal/Modal";
 import {NavLink} from "react-router-dom";
 import SuperButton from "../common/SuperButton/SuperButton";
@@ -8,7 +8,7 @@ import {Error} from "../common/Error/Error";
 import {forgotPassword, forgotPasswordError, forgotStatusType} from "../../store/forgot-password-reducer";
 import {useDispatch, useSelector} from "react-redux";
 import {Dispatch} from "redux";
-import { Navigate } from "react-router-dom";
+import {Navigate} from "react-router-dom";
 import {AppRootStateType} from "../../store/store";
 import {Preloader} from "../common/Preloader/Preloader";
 
@@ -35,7 +35,7 @@ export const ForgotPassword: React.FC = () => {
     if (status === "succeeded") {
         dispatch(forgotPasswordError(''))
 
-        return <Navigate to='/check-email' state={data.email} />
+        return <Navigate to='/check-email' state={data.email}/>
     }
 
     if (status === "loading") {
@@ -54,7 +54,11 @@ export const ForgotPassword: React.FC = () => {
                 />
                 <p>Enter your email address and we will send you further instructions</p>
                 <Error error={error}/>
-                <SuperButton>Send Instructions</SuperButton>
+                <SuperButton rounded
+                             color='dark-blue'
+                             type={"submit"}>
+                    Send Instructions
+                </SuperButton>
             </form>
             <div className={style.forgotBottom}>
                 <p>Did you remember your password?</p>

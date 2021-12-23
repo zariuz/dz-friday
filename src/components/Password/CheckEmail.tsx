@@ -2,7 +2,7 @@ import React from 'react';
 import {useLocation} from "react-router";
 import {Modal} from "../common/Modal/Modal";
 import {EmailSvg} from "../../assets/icon/EmailSVG";
-import style from "./ForgotPassword.module.scss";
+import style from "./ForgotPassword.module.css";
 
 export const CheckEmail: React.FC = () => {
     const location = useLocation()

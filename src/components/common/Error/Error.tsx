@@ -1,5 +1,5 @@
 import React from "react";
-import style from "./Error.module.scss";
+import style from "./Error.module.css";
 
 type ErrorPropsType = {
    error: string | null

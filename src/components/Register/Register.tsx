@@ -88,8 +88,19 @@ export const Register = () => {
                 />
                 <Error error={error}/>
                 <div className={style.button_block}>
-                    <SuperButton onClick={onCancelBtnClick}>Cancel</SuperButton>
-                    <SuperButton onClick={onRegisterBtnClick}>Register</SuperButton>
+                    <SuperButton rounded
+                                 color='light-blue'
+                                 disabled={isFetching}
+                                 width={125} onClick={onCancelBtnClick}>
+                        Cancel
+                    </SuperButton>
+                    <SuperButton rounded
+                                 color='dark-blue'
+                                 onClick={onRegisterBtnClick}
+                                 disabled={isFetching}
+                                 width={190}>
+                        Register
+                    </SuperButton>
                 </div>
             </Modal>
         );

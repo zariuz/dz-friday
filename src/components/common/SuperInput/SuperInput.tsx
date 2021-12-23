@@ -6,22 +6,22 @@ type DefaultInputPropsType = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElem
 type SuperInputTextPropsType = DefaultInputPropsType & {
     onChangeText?: (value: string) => void;
     onEnter?: () => void;
-    error?: string;
+    error?: string | null;
     spanClassName?: string;
     label?: string
 };
 
 export const SuperInput: React.FC<SuperInputTextPropsType> = ({
-                                                           label, // достаём и игнорируем чтоб нельзя было задать другой тип инпута
-                                                           onChange,
-                                                           onChangeText,
-                                                           onKeyPress,
-                                                           onEnter,
-                                                           error,
-                                                           className,
-                                                           spanClassName,
-                                                           ...restProps // все остальные пропсы попадут в объект restProps
-                                                       }) => {
+                                                                  label, // достаём и игнорируем чтоб нельзя было задать другой тип инпута
+                                                                  onChange,
+                                                                  onChangeText,
+                                                                  onKeyPress,
+                                                                  onEnter,
+                                                                  error,
+                                                                  className,
+                                                                  spanClassName,
+                                                                  ...restProps // все остальные пропсы попадут в объект restProps
+                                                              }) => {
     const onChangeCallback = (e: ChangeEvent<HTMLInputElement>) => {
         onChange &&
         onChange(e);
