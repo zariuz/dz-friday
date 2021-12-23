@@ -4,7 +4,7 @@ import {Routes, Route} from "react-router-dom";
 import {Profile} from "./components/Profile/Profile";
 import {Register} from "./components/Register/Register";
 import {ForgotPassword} from "./components/Password/ForgotPassword";
-import {NewPassword} from "./components/Password/NewPassword";
+import {SetPassword} from "./components/Password/SetPassword";
 import {ErrorPage} from "./components/ErrorPage";
 import {Header} from "./components/Header/Header";
 import {Login} from "./components/Login/Login";
@@ -35,7 +35,7 @@ export const App = () => {
                 <Route path='/login' element={<Login/>}/>
                 <Route path='/register' element={<Register/>}/>
                 <Route path='/forgot-password' element={<ForgotPassword/>}/>
-                <Route path='/set-new-password' element={<NewPassword/>}/>
+                <Route path='/set-new-password/:token' element={<SetPassword/>}/>
                 <Route path='/check-email' element={<CheckEmail/>}/>
                 <Route path='*' element={<ErrorPage/>}/>
             </Routes>

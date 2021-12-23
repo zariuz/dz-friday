@@ -14,14 +14,12 @@
     color: #2D2E46;
 }
 
-.checkboxBlock:hover {
+.checkboxBlock a:hover {
     text-decoration: underline;
 }
 
 .bottom {
     text-align: center;
-
-
 }
 
 .bottom p {
